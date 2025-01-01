@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Female Angers - Fighting Game</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/animations.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen">
+            <div class="loader"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen hidden">
+            <h1 class="game-title">Female Angers</h1>
+            <div class="menu-buttons">
+                <button id="story-mode" class="menu-button">Story Mode</button>
+                <button id="versus-mode" class="menu-button">VS Mode</button>
+                <button id="online-mode" class="menu-button">Online</button>
+                <button id="training-mode" class="menu-button">Training</button>
+                <button id="options" class="menu-button">Options</button>
+            </div>
+        </div>
+
+        <!-- Character Select Screen -->
+        <div id="character-select" class="screen hidden">
+            <h2>Select Your Fighter</h2>
+            <div class="character-grid">
+                <!-- Characters will be populated by JS -->
+            </div>
+            <div class="character-preview">
+                <div class="preview-animation"></div>
+                <div class="character-info">
+                    <h3 class="character-name"></h3>
+                    <p class="character-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <canvas id="gameCanvas"></canvas>
+            <div id="ui-overlay">
+                <div class="health-bars">
+                    <div class="health-bar p1">
+                        <div class="health-fill"></div>
+                        <div class="special-meter"></div>
+                    </div>
+                    <div class="timer">99</div>
+                    <div class="health-bar p2">
+                        <div class="health-fill"></div>
+                        <div class="special-meter"></div>
+                    </div>
+                </div>
+                <div class="combo-counter p1 hidden">
+                    <span class="hits">0</span>
+                    <span class="text">HITS</span>
+                </div>
+                <div class="combo-counter p2 hidden">
+                    <span class="hits">0</span>
+                    <span class="text">HITS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
