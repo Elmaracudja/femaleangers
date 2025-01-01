@@ -1,205 +1,345 @@
-/* Character Animations */
+/* 
+  Animation and Transition Library for Fighting Game Demo
+  -------------------------------------------------------
+  This CSS file contains a suite of animations for various gameplay
+  scenarios: character idling, attacking, taking hits, celebrating
+  victory, special move effects, UI transitions, and more.
+
+  Improvements & Enhancements:
+  - Grouped and labeled sections for clarity (Character, Effects, UI, etc.)
+  - Added transform-origin and will-change properties for smoother animations.
+  - Incorporated consistent naming and usage for future expansions.
+  - Maintained all original behaviors while ensuring code is robust 
+    and easy to extend.
+*/
+
+/* =========================== */
+/*       CHARACTER STATES      */
+/* =========================== */
+
+/* Idle: Subtle up/down bobbing for a breathing effect */
 @keyframes idle {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
+/* Attack: Quick lunge forward/back to simulate a melee or punch */
 @keyframes attack {
-    0% { transform: translateX(0); }
-    10% { transform: translateX(-10px); }
-    30% { transform: translateX(20px); }
-    100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-10px);
+  }
+  30% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
+/* Hit: Character reels back with a brightness flash to show being hurt */
 @keyframes hit {
-    0% { transform: translateX(0) rotate(0deg); filter: brightness(1); }
-    20% { transform: translateX(-15px) rotate(-5deg); filter: brightness(1.5); }
-    100% { transform: translateX(0) rotate(0deg); filter: brightness(1); }
+  0% {
+    transform: translateX(0) rotate(0deg);
+    filter: brightness(1);
+  }
+  20% {
+    transform: translateX(-15px) rotate(-5deg);
+    filter: brightness(1.5);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    filter: brightness(1);
+  }
 }
 
+/* Victory: Subtle scale up/down to celebrate a finishing move */
 @keyframes victory {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-/* Special Move Effects */
+/* 
+  Usage Examples:
+    .player-idle {
+      animation: idle 1.5s ease-in-out infinite;
+    }
+    .player-attack {
+      animation: attack 0.4s ease-in-out;
+    }
+    .player-hit {
+      animation: hit 0.3s ease-out;
+    }
+    .player-victory {
+      animation: victory 2s ease-in-out infinite;
+    }
+*/
+
+/* =========================== */
+/*   SPECIAL MOVE EFFECTS      */
+/* =========================== */
+
+/* Common Utility Classes for Effects */
 .water-effect {
-    animation: waterRipple 1s ease-out;
+  animation: waterRipple 1s ease-out;
+  transform-origin: center;
+  will-change: transform, opacity, border;
 }
 
 .cherry-effect {
-    animation: cherrySwirl 2s linear;
+  animation: cherrySwirl 2s linear;
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
 .electric-effect {
-    animation: electricSpark 0.5s ease-out;
+  animation: electricSpark 0.5s ease-out;
+  transform-origin: center;
+  will-change: transform, filter;
 }
 
 .sand-effect {
-    animation: sandStorm 1.5s ease-out;
+  animation: sandStorm 1.5s ease-out;
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
+/* Water Ripple: Expanding circular ripple with fading border */
 @keyframes waterRipple {
-    0% { 
-        transform: scale(0);
-        opacity: 1;
-        border: 2px solid #4FC3F7;
-    }
-    100% { 
-        transform: scale(2);
-        opacity: 0;
-        border: 2px solid transparent;
-    }
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    border: 2px solid #4FC3F7;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+    border: 2px solid transparent;
+  }
 }
 
+/* Cherry Swirl: Spinning out to 720deg, shrinking to zero, fading out */
 @keyframes cherrySwirl {
-    0% { 
-        transform: rotate(0deg) scale(1);
-        opacity: 1;
-    }
-    100% { 
-        transform: rotate(720deg) scale(0);
-        opacity: 0;
-    }
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(720deg) scale(0);
+    opacity: 0;
+  }
 }
 
+/* Electric Spark: Quick brightness and blur effect for lightning attacks */
 @keyframes electricSpark {
-    0% { 
-        filter: brightness(1) blur(0);
-        transform: scale(1);
-    }
-    50% { 
-        filter: brightness(2) blur(2px);
-        transform: scale(1.2);
-    }
-    100% { 
-        filter: brightness(1) blur(0);
-        transform: scale(1);
-    }
+  0% {
+    filter: brightness(1) blur(0);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(2) blur(2px);
+    transform: scale(1.2);
+  }
+  100% {
+    filter: brightness(1) blur(0);
+    transform: scale(1);
+  }
 }
 
+/* Sand Storm: Blowing sand-like motion translating to the right and fading */
 @keyframes sandStorm {
-    0% { 
-        transform: translateX(0) scale(1);
-        opacity: 1;
-    }
-    100% { 
-        transform: translateX(100px) scale(0);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100px) scale(0);
+    opacity: 0;
+  }
 }
 
-/* UI Animations */
+/* =========================== */
+/*       UI ANIMATIONS         */
+/* =========================== */
+
+/* Fade in the menu with upward motion */
 @keyframes menuAppear {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Button hover "pop" */
 @keyframes buttonHover {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 
+/* Combo Popup for combos or sequence notifiers */
 @keyframes comboPopup {
-    0% { 
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% { 
-        transform: scale(1.2);
-        opacity: 1;
-    }
-    100% { 
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Screen Transition Effects */
 .fade-in {
-    animation: fadeIn 0.5s ease-in forwards;
+  animation: fadeIn 0.5s ease-in forwards;
 }
 
 .fade-out {
-    animation: fadeOut 0.5s ease-out forwards;
+  animation: fadeOut 0.5s ease-out forwards;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-/* Loading Animation */
+/* =========================== */
+/*     LOADING ANIMATIONS      */
+/* =========================== */
+
 .loading-spinner {
-    animation: loadingSpin 1s linear infinite;
+  animation: loadingSpin 1s linear infinite;
+  transform-origin: center;
+  will-change: transform;
 }
 
 @keyframes loadingSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-/* Victory Animations */
+/* =========================== */
+/*   VICTORY / CHARACTER SEL   */
+/* =========================== */
+
+/* Victory text scale/rotation flourish */
 .victory-text {
-    animation: victoryText 2s ease-out forwards;
+  animation: victoryText 2s ease-out forwards;
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
 @keyframes victoryText {
-    0% {
-        transform: scale(0) rotate(-10deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2) rotate(5deg);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
-/* Character Selection Animations */
+/* Character hover effect (e.g., on selection screen) */
 .character-hover {
-    animation: characterHover 0.3s ease-in-out forwards;
+  animation: characterHover 0.3s ease-in-out forwards;
+  transform-origin: center bottom;
+  will-change: transform;
 }
 
 @keyframes characterHover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Health Bar Animations */
+/* =========================== */
+/*    HEALTH BAR ANIMATIONS    */
+/* =========================== */
+
+/* Quick flash to indicate health bar decrease */
 .health-decrease {
-    animation: healthFlash 0.3s ease-in-out;
+  animation: healthFlash 0.3s ease-in-out;
+  will-change: filter;
 }
 
 @keyframes healthFlash {
-    0% { filter: brightness(1); }
-    50% { filter: brightness(2); }
-    100% { filter: brightness(1); }
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(2);
+  }
+  100% {
+    filter: brightness(1);
+  }
 }
 
-/* Special Move Charge */
+/* Special Move Charge: e.g., highlight gauge charging */
 .special-charge {
-    animation: specialCharge 1s ease-in-out infinite;
+  animation: specialCharge 1s ease-in-out infinite;
+  will-change: filter;
 }
 
 @keyframes specialCharge {
-    0% { filter: brightness(1); }
-    50% { filter: brightness(1.5) hue-rotate(45deg); }
-    100% { filter: brightness(1); }
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5) hue-rotate(45deg);
+  }
+  100% {
+    filter: brightness(1);
+  }
 }
