@@ -1,0 +1,201 @@
+:root {
+    --primary-color: #ff4081;
+    --secondary-color: #f50057;
+    --background-color: #000;
+    --text-color: #fff;
+    --health-p1-color: #2196f3;
+    --health-p2-color: #f44336;
+    --special-meter-color: #ffd700;
+    --menu-background: rgba(0, 0, 0, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-container {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.3);
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--menu-background);
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Loading Screen */
+#loading-screen {
+    background: var(--background-color);
+    z-index: 1000;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid var(--text-color);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Menu Styles */
+.game-title {
+    font-size: 4em;
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-button {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-button:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
+}
+
+/* Game UI */
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    padding: 20px;
+}
+
+.health-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.health-bar {
+    width: 400px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--text-color);
+    position: relative;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--health-p1-color);
+    transition: width 0.3s ease;
+}
+
+.special-meter {
+    height: 5px;
+    width: 100%;
+    background: var(--special-meter-color);
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.timer {
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.combo-counter {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    text-shadow: 0 0 10px rgba(255, 64, 129, 0.8);
+}
+
+.combo-counter.p1 {
+    left: 100px;
+    top: 100px;
+}
+
+.combo-counter.p2 {
+    right: 100px;
+    top: 100px;
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
