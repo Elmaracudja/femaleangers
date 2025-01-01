@@ -20,7 +20,8 @@
     "vite": "^5.0.0",
     "netlify-cli": "^17.7.0",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "terser": "^5.24.0"
   },
   "engines": {
     "node": ">=16.0.0"
