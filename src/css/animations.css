@@ -1,0 +1,205 @@
+/* Character Animations */
+@keyframes idle {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes attack {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-10px); }
+    30% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes hit {
+    0% { transform: translateX(0) rotate(0deg); filter: brightness(1); }
+    20% { transform: translateX(-15px) rotate(-5deg); filter: brightness(1.5); }
+    100% { transform: translateX(0) rotate(0deg); filter: brightness(1); }
+}
+
+@keyframes victory {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Special Move Effects */
+.water-effect {
+    animation: waterRipple 1s ease-out;
+}
+
+.cherry-effect {
+    animation: cherrySwirl 2s linear;
+}
+
+.electric-effect {
+    animation: electricSpark 0.5s ease-out;
+}
+
+.sand-effect {
+    animation: sandStorm 1.5s ease-out;
+}
+
+@keyframes waterRipple {
+    0% { 
+        transform: scale(0);
+        opacity: 1;
+        border: 2px solid #4FC3F7;
+    }
+    100% { 
+        transform: scale(2);
+        opacity: 0;
+        border: 2px solid transparent;
+    }
+}
+
+@keyframes cherrySwirl {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% { 
+        transform: rotate(720deg) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes electricSpark {
+    0% { 
+        filter: brightness(1) blur(0);
+        transform: scale(1);
+    }
+    50% { 
+        filter: brightness(2) blur(2px);
+        transform: scale(1.2);
+    }
+    100% { 
+        filter: brightness(1) blur(0);
+        transform: scale(1);
+    }
+}
+
+@keyframes sandStorm {
+    0% { 
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(100px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* UI Animations */
+@keyframes menuAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonHover {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes comboPopup {
+    0% { 
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% { 
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Screen Transition Effects */
+.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Loading Animation */
+.loading-spinner {
+    animation: loadingSpin 1s linear infinite;
+}
+
+@keyframes loadingSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Victory Animations */
+.victory-text {
+    animation: victoryText 2s ease-out forwards;
+}
+
+@keyframes victoryText {
+    0% {
+        transform: scale(0) rotate(-10deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Character Selection Animations */
+.character-hover {
+    animation: characterHover 0.3s ease-in-out forwards;
+}
+
+@keyframes characterHover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Health Bar Animations */
+.health-decrease {
+    animation: healthFlash 0.3s ease-in-out;
+}
+
+@keyframes healthFlash {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(2); }
+    100% { filter: brightness(1); }
+}
+
+/* Special Move Charge */
+.special-charge {
+    animation: specialCharge 1s ease-in-out infinite;
+}
+
+@keyframes specialCharge {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5) hue-rotate(45deg); }
+    100% { filter: brightness(1); }
+}
